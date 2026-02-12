@@ -8,35 +8,28 @@ public class AdService : MonoBehaviour, IUnityAdsInitializationListener,
     [Header("Unity Ads Settings")]
     [SerializeField] private bool testMode = true;
     
-    // Platform-specific Game IDs
     [SerializeField] private string androidGameId = "YOUR_ANDROID_GAME_ID";
     [SerializeField] private string iosGameId = "YOUR_IOS_GAME_ID";
     
-    // Placement IDs
     [SerializeField] private string bannerPlacement = "Banner_Android";
     [SerializeField] private string rewardedPlacement = "Rewarded_Android";
     [SerializeField] private string interstitialPlacement = "Interstitial_Android";
     
-    // iOS variants
     [SerializeField] private string bannerPlacementIOS = "Banner_iOS";
     [SerializeField] private string rewardedPlacementIOS = "Rewarded_iOS";
     [SerializeField] private string interstitialPlacementIOS = "Interstitial_iOS";
     
-    // Current platform
     private string currentGameId;
     private string currentBannerId;
     private string currentRewardedId;
     private string currentInterstitialId;
     
-    // Banner position
     [SerializeField] private BannerPosition bannerPosition = BannerPosition.BOTTOM_CENTER;
     
-    // Callbacks
     public Action OnRewardedAdCompleted;
     public Action OnRewardedAdFailed;
     public Action OnInterstitialAdClosed;
     
-    // Singleton
     public static AdService Instance { get; private set; }
     
     void Awake()
@@ -55,7 +48,6 @@ public class AdService : MonoBehaviour, IUnityAdsInitializationListener,
     
     void InitializeAds()
     {
-        // Platform detection
         #if UNITY_ANDROID
             currentGameId = androidGameId;
             currentBannerId = bannerPlacement;
@@ -67,7 +59,8 @@ public class AdService : MonoBehaviour, IUnityAdsInitializationListener,
             currentRewardedId = rewardedPlacementIOS;
             currentInterstitialId = interstitialPlacementIOS;
         #else
-            currentGameId = androidGameId; // Editor fallback
+            currentGameId = androidGameId; 
+            currentGameId = androidGameId; 
             currentBannerId = bannerPlacement;
             currentRewardedId = rewardedPlacement;
             currentInterstitialId = interstitialPlacement;
